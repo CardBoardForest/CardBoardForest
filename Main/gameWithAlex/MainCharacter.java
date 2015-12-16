@@ -132,8 +132,10 @@ public class MainCharacter implements Character
    }
     public void draw(Graphics g)
     {
+		// gets the map offset
         int tx = map.getx();
         int ty =  map.gety();
+        // draws the image
         g.drawImage(getImage(), (int)((tx+x-PLAYER_SCALE/2)), (int)((ty+y-PLAYER_SCALE/2)), PLAYER_SCALE, PLAYER_SCALE, null);
         // draws the colition boxes
         Graphics2D g2 = (Graphics2D) g;
@@ -147,6 +149,7 @@ public class MainCharacter implements Character
     }
     public void update()
     {
+    		// gets the map offset
             int tx = map.getx();
             int ty =  map.gety();
             

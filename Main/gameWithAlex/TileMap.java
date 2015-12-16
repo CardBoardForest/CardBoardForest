@@ -29,7 +29,7 @@ public class TileMap
                     new InputStreamReader(
                             getClass().getClassLoader().getResourceAsStream(
                                 s)));
-
+            //reads first line
             mapWidth = Integer.parseInt(br.readLine());
             mapHeight = Integer.parseInt(br.readLine());
             // makes the map in to a string matrices
