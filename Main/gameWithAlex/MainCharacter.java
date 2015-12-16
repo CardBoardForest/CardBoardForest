@@ -14,28 +14,28 @@ import javax.imageio.ImageIO;
 
 public class MainCharacter implements Character
 {
-	// Rectangles for the player
-	 private Rectangle deathBox;
-     private Rectangle collisiontop;
-     private Rectangle collisionbottom;
-     private Rectangle collisionleft;
-     private Rectangle collisionright;
-    // Character x Character y 
-     private double x ;
-     private double y  ;
-    // animations for animators of the Character
-     private Animaton a;
-    // Moment variables
-     private boolean MoveU;
-     private boolean MoveD;
-     private boolean MoveL;
-     private boolean MoveR;
-    // move speed
-     final double movespeed = 3;
-    //player scale
-     final int PLAYER_SCALE = 64;
-    // tile map import
-    TileMap map;
+   // Rectangles for the player
+   private Rectangle deathBox;
+   private Rectangle collisiontop;
+   private Rectangle collisionbottom;
+   private Rectangle collisionleft;
+   private Rectangle collisionright;
+   // Character x Character y 
+   private double x ;
+   private double y  ;
+   // animations for animators of the Character
+   private Animaton a;
+   // Moment variables
+   private boolean MoveU;
+   private boolean MoveD;
+   private boolean MoveL;
+   private boolean MoveR;
+   // move speed
+   final double movespeed = 3;
+   //player scale
+   final int PLAYER_SCALE = 64;
+   // tile map import
+   TileMap map;
    public MainCharacter(TileMap tm)
    {
 	   // set animation so no error
