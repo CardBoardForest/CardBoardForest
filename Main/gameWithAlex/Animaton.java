@@ -2,7 +2,7 @@
 package gameWithAlex;
 
 import java.awt.image.BufferedImage;
-//This is a really good comment!!
+
 public class Animaton {
 	private BufferedImage[] frames;
 	private int currentFrame;
