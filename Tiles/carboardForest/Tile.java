@@ -1,3 +1,4 @@
+//This is a cool comment
 package carboardForest;
 
 import java.awt.Graphics;
