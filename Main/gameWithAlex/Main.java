@@ -115,6 +115,10 @@ public class Main extends JPanel implements ActionListener , KeyListener
        case KeyEvent.VK_A :boy.moveleft(true);break ;
        case KeyEvent.VK_S :boy.movedown(true);break ;
        case KeyEvent.VK_D :boy.moveright(true);break ;
+       case KeyEvent.VK_UP :boy.moveup(true);break ;
+       case KeyEvent.VK_LEFT :boy.moveleft(true);break ;
+       case KeyEvent.VK_DOWN :boy.movedown(true);break ;
+       case KeyEvent.VK_RIGHT :boy.moveright(true);break ;
        }
    }
 
@@ -129,6 +133,10 @@ public class Main extends JPanel implements ActionListener , KeyListener
        case KeyEvent.VK_A :boy.moveleft(false);break ;
        case KeyEvent.VK_S :boy.movedown(false);break ;
        case KeyEvent.VK_D :boy.moveright(false);break ;
+       case KeyEvent.VK_UP :boy.moveup(false);break ;
+       case KeyEvent.VK_LEFT :boy.moveleft(false);break ;
+       case KeyEvent.VK_DOWN :boy.movedown(false);break ;
+       case KeyEvent.VK_RIGHT :boy.moveright(false);break ;
        // kills the program 
        case KeyEvent.VK_ESCAPE:timer.stop(); frame.dispose();;break ;
        }
