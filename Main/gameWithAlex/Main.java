@@ -15,8 +15,6 @@ public class Main extends JPanel implements ActionListener , KeyListener
     //double buffer stuff
     private Image dbImage;
     private Graphics dbg;
-    // fps stuff
-    long fps ;
     //timer that holds the refresh rate
     private final Timer timer = new Timer( 33, this);
     //Different scales if i want to change them 
@@ -61,8 +59,6 @@ public class Main extends JPanel implements ActionListener , KeyListener
         map.draw(g);
         //draws boy 
         boy.draw(g);
-        g.setColor(Color.RED);
-        g.fillRect(this.WIDTH/2-3, this.HEIGHT/2-3,6, 6);
      }
 
     // refreshes the stuff and is the timer for the game clock
