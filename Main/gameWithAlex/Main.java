@@ -61,8 +61,6 @@ public class Main extends JPanel implements ActionListener , KeyListener
         map.draw(g);
         //draws boy 
         boy.draw(g);
-        g.setColor(Color.RED);
-        g.fillRect(this.WIDTH/2-3, this.HEIGHT/2-3,6, 6);
      }
 
     // refreshes the stuff and is the timer for the game clock

@@ -151,7 +151,7 @@ public class MainCharacter implements Character
             int ty =  map.gety();
             
             // sets players character boxes 
-            deathBox = new Rectangle(((int)(tx+x-PLAYER_SCALE/2))+8,(int)((ty+y-PLAYER_SCALE/2)+7), PLAYER_SCALE-8, PLAYER_SCALE-7);
+            deathBox = new Rectangle(((int)(tx+x-PLAYER_SCALE/2))+8,(int)((ty+y-PLAYER_SCALE/2)+7), PLAYER_SCALE-18, PLAYER_SCALE-7);
             collisiontop = new Rectangle((int)((tx+x-PLAYER_SCALE/2))+9, (int)((ty+y-PLAYER_SCALE/2)+5),PLAYER_SCALE-(11+8),2);
             collisionright = new Rectangle((int)((tx+x-PLAYER_SCALE/2))+(PLAYER_SCALE-10),(int)((ty+y-PLAYER_SCALE/2))+8,2,PLAYER_SCALE-9);
             collisionbottom = new Rectangle((int)((tx+x-PLAYER_SCALE/2)+9), (int)((ty+y-PLAYER_SCALE/2))+PLAYER_SCALE,PLAYER_SCALE-(11+8),2);
