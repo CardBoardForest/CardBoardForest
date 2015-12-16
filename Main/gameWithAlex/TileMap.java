@@ -7,6 +7,7 @@ import java.io.*;
 import java.awt.*;
 
 import carboardForest.StandardBlack;
+import carboardForest.StandardKillTile;
 import carboardForest.Tile;
 import carboardForest.StandardWhite;
 public class TileMap
@@ -32,9 +33,10 @@ public class TileMap
             //reads first line
             mapWidth = Integer.parseInt(br.readLine());
             mapHeight = Integer.parseInt(br.readLine());
-            // makes the map in to a string matrices
+            //sets maps
             Tilemap = new Tile[mapHeight][mapWidth];
             map = new int[mapHeight][mapWidth];
+            //sets the map so i can set it to the tilemap
             String Delimitors = " ";
             for(int row = 0; row < mapHeight; row++)
             {
@@ -45,7 +47,7 @@ public class TileMap
                     map[row][col] = Integer.parseInt(tokens[col]);
                 }
             }
-            // sets the tilemap
+            //sets tilemap and puts it with correct types
             for(int row = 0; row < mapHeight; row++)
             {
                 for(int col = 0; col < mapWidth; col++)
@@ -55,6 +57,8 @@ public class TileMap
                      {
                      	case 0:Tilemap[row][col] = new StandardWhite();break;
                      	case 1:Tilemap[row][col] = new StandardBlack();break;
+                     	case 2:Tilemap[row][col] = new StandardKillTile();break;
+                     	default :Tilemap[row][col] = new StandardWhite();break;
                      }
                 	
                 }
@@ -69,8 +73,7 @@ public class TileMap
     }
     public void update()
     {
-            //0 = free block
-            //1 = Can't move through block
+            //updates the Rectangle for the Tilemap
             for(int row = 0; row < mapHeight; row++)
             {
                 for(int col = 0; col < mapWidth; col++)
@@ -113,12 +116,10 @@ public class TileMap
     {
         return Tilemap[row][col];
     }
-
-        // draws blocks on the grid
+    // the draw method for the Tilemap
     public void draw(Graphics g)
     {
-        //0 = free block
-        //1 = Can't move through block
+        //runs through the Tilemap and 
         for(int row = 0; row < mapHeight; row++)
         {
             for(int col = 0; col < mapWidth; col++)

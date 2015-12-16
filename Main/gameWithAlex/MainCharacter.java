@@ -189,6 +189,10 @@ public class MainCharacter implements Character
                 		{
                 			moveleft = false;
                 		}
+                		if(deathBox.intersects(map.getTile(row, col).getRectangle())&& map.getTile(row, col).getType().equals("kill"))
+                		{
+                			System.out.println("dead");
+                		}
 
                 }
             }
