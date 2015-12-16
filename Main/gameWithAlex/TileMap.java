@@ -128,15 +128,5 @@ public class TileMap
         
         
         }
-        /*g.setColor(Color.red);
-        Rectangle[][] rectypes =  getRectangleType1();
-        Graphics2D g2 = (Graphics2D) g;
-        for(int row = 0; row < getWidth(); row++)
-        {
-            for(int col = 0; col < getHeight(); col++)
-            {
-                g2.draw(rectypes[row][col]);
-            }
-        }*/
     }
 }
