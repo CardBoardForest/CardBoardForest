@@ -1,12 +1,12 @@
-// @author Colin Wakefield
 package gameWithAlex;
- 
-import java.awt.*;
+
+import
+// @author Colin Wakefield
+ java.awt.*;
 import java.awt.event.*;
 import java.awt.image.BufferStrategy;
 import java.io.*;
 import java.io.*;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.Timer;
@@ -25,9 +25,10 @@ public class Main extends JPanel implements ActionListener , KeyListener
     public  static int WIDTH; 
     public  static int HEIGHT;
     JFrame frame;
-    // gets the map
+    // gets the and other classes
     TileMap  map ;
     MainCharacter boy;
+    ItemHandler itemhandler;
     //testing variable
     //animation variables
     public static void main(String args[])
@@ -59,6 +60,8 @@ public class Main extends JPanel implements ActionListener , KeyListener
         map.draw(g);
         //draws boy 
         boy.draw(g);
+        //draws item handler
+        itemhandler.draw(g);
      }
 
     // refreshes the stuff and is the timer for the game clock
@@ -80,13 +83,14 @@ public class Main extends JPanel implements ActionListener , KeyListener
        map.update();
        //update the boy
        boy.update();
-       
+       //updates itemhandler
+       itemhandler.update();
        
    }
    public void init()
    {
-	   //took out because not needed
-       //frame.setUndecorated(true);
+	   //removesbthe bar at the top
+       frame.setUndecorated(true);
        frame.setSize((600),(600));
        frame.setVisible(true);
        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -99,9 +103,10 @@ public class Main extends JPanel implements ActionListener , KeyListener
        HEIGHT = frame.getHeight();
        map = new TileMap("text2.txt",Scale32);
        boy = new MainCharacter(map);
+       itemhandler = new ItemHandler(WIDTH,HEIGHT,map,boy);
    }
    @Override
-   //Moment for the player
+   //Moment for the player and other key events
     public void keyPressed(KeyEvent e) 
    {
        int keyCode = e.getKeyCode();
