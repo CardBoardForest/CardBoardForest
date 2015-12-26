@@ -11,4 +11,5 @@ public interface Item extends Tile
 {
     public abstract void playerHas(boolean has);
     public abstract boolean getHas();
+    public abstract void DrawBackgroundTile(Graphics g,int row, int col, int x, int y, int tileSize );
 }

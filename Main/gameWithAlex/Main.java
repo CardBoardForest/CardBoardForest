@@ -15,8 +15,8 @@ public class Main extends JPanel implements ActionListener , KeyListener
     //double buffer stuff
     private Image dbImage;
     private Graphics dbg;
-    //timer that holds the refresh rate
-    private final Timer timer = new Timer( 33, this);
+    //timer that holds the refresh rate of uptates
+    private final Timer update = new Timer( 33, this);
     //Different scales if i want to change them 
     private final int Scale = 16;
     private final int Scale32 = 32;
@@ -97,7 +97,7 @@ public class Main extends JPanel implements ActionListener , KeyListener
        frame.setResizable(false);
        frame.setLocationRelativeTo(null);
        frame.addKeyListener(this);
-       timer.start();
+       update.start();
        frame.add(this);
        WIDTH = frame.getWidth();
        HEIGHT = frame.getHeight();
@@ -139,7 +139,7 @@ public class Main extends JPanel implements ActionListener , KeyListener
        case KeyEvent.VK_DOWN :boy.movedown(false);break ;
        case KeyEvent.VK_RIGHT :boy.moveright(false);break ;
        // kills the program 
-       case KeyEvent.VK_ESCAPE:timer.stop(); frame.dispose();;break ;
+       case KeyEvent.VK_ESCAPE:update.stop(); frame.dispose();;break ;
        }
    }
 

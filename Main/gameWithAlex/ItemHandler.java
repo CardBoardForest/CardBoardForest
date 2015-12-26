@@ -22,12 +22,12 @@ public class ItemHandler
         boy = b;
     }
     
-    public boolean add(Item I)
+    public boolean add(Item I , boolean has)
     {
         // addes a item to the list if the list is not full
         int x = 0 ; 
         //finds a sopt where not fill
-        while(x < items.length && items[x] != null)
+        while(x < items.length && items[x] != null && !has)
         {
             x++;
         }
@@ -45,11 +45,13 @@ public class ItemHandler
         // draws black grid
         g.setColor(Color.black);
         g.fillRect(0,HEIGHT-size,size*items.length,size);
-        //draws items in the correct spot
+        //draws items in the correct spot when picked up
         for(int x = 0; x < items.length; x++)
         {
             if(items[x] != null)
-            items[x].Draw(g,0,x,0 ,HEIGHT-size , size);
+            {
+            	items[x].Draw(g,0,x,0 ,HEIGHT-size , size);
+            }
         }
     }
     
@@ -62,15 +64,10 @@ public class ItemHandler
                 {
                     
                     //checks for item collision with the players death box
-                    if(boy.getDeathbox().intersects(map.getTile(row, col).getRectangle()) && map.getTile(row, col).getType().equals("Gitem"))
+                    if(boy.getDeathbox().intersects(map.getTile(row, col).getRectangle()) && map.getTile(row, col).getType().equals("item"))
                     {
-                        // sets the players has to true or fase if the add is not full
-                       ((Item)map.getTile(row, col)).playerHas(this.add((Item)map.getTile(row, col)));
-                       //sets tile if has changed
-                       if(((Item)map.getTile(row, col)).getHas())
-                       {
-                       map.setTile(row,col,new StandardWhite());
-                       }
+                        // sets the players has to true or false if the add is not full and it does not all ready have the block
+                       ((Item)map.getTile(row, col)).playerHas(this.add((Item)map.getTile(row, col),((Item) map.getTile(row, col)).getHas()));
                     } 
                 }
             }

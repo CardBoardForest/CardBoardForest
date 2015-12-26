@@ -10,7 +10,7 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 public class StandardGreenItem implements Item
 {
-    private final String Type ="Gitem";
+    private final String Type ="item";
     private Rectangle r;
     boolean have;
     public StandardGreenItem()
@@ -46,8 +46,13 @@ public class StandardGreenItem implements Item
     @Override
     public void Draw(Graphics g,int row, int col, int x, int y, int tileSize ) 
     {
+    	this.DrawBackgroundTile(g,col,row,x,y,tileSize);
+    	if(!have)
+    	{
         g.setColor(Color.green);
-        g.fillRect(col*tileSize+x,row*tileSize+y,tileSize,tileSize);
+        g.fillRect(col*tileSize+x,row*tileSize+y,tileSize/2,tileSize/2);
+    	}
+        
     }
 
     @Override
@@ -61,5 +66,11 @@ public class StandardGreenItem implements Item
     {
         return Type;
     }
+	@Override
+	public void DrawBackgroundTile(Graphics g, int row, int col, int x, int y, int tileSize) 
+	{
+		g.setColor(Color.pink);
+        g.fillRect(col*tileSize+x,row*tileSize+y,tileSize,tileSize);
+	}
 
 }
