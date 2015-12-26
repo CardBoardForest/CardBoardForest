@@ -16,6 +16,7 @@ public class ItemHandler
     public ItemHandler(int w , int h, TileMap m,MainCharacter b)
     {
         items = new Item[8];
+foasdfdsadfewa
         WIDTH = w;
         HEIGHT = h;
         map = m;
