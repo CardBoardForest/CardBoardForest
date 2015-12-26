@@ -1,5 +1,6 @@
-// @author Colin Wakefield
 package gameWithAlex;
+
+// @author Colin Wakefield
 
 import java.awt.image.BufferedImage;
 
