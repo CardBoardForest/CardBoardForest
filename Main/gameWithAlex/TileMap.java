@@ -1,14 +1,15 @@
 package gameWithAlex;
 
+
+ 
+
 import java.io.*;
 import java.awt.*;
 
 import carboardForest.StandardBlack;
-import carboardForest.StandardGreenItem;
 import carboardForest.StandardKillTile;
-import carboardForest.StandardWhite;
 import carboardForest.Tile;
-
+import carboardForest.StandardWhite;
 public class TileMap
 {
     private int x;
@@ -57,7 +58,6 @@ public class TileMap
                      	case 0:Tilemap[row][col] = new StandardWhite();break;
                      	case 1:Tilemap[row][col] = new StandardBlack();break;
                      	case 2:Tilemap[row][col] = new StandardKillTile();break;
-                     	case 3:Tilemap[row][col] = new StandardGreenItem();break;
                      	default :Tilemap[row][col] = new StandardWhite();break;
                      }
                 	
@@ -78,7 +78,8 @@ public class TileMap
             {
                 for(int col = 0; col < mapWidth; col++)
                 {
-                    Tilemap[row][col].setRectangle(row, col, x, y, tileSize); 
+                    Tilemap[row][col].setRectangle(row, col, x, y, tileSize);
+                    
                 }
             }
     }
@@ -114,10 +115,6 @@ public class TileMap
     public Tile getTile(int row ,int col)
     {
         return Tilemap[row][col];
-    }
-    public void setTile(int row,int col,Tile t)
-    {
-         Tilemap[row][col] = t;
     }
     // the draw method for the Tilemap
     public void draw(Graphics g)

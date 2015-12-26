@@ -14,31 +14,31 @@ import javax.imageio.ImageIO;
 
 public class MainCharacter implements Character
 {
-    // Rectangles for the player
-     private Rectangle deathBox;
-     private Rectangle collisiontop;
-     private Rectangle collisionbottom;
-     private Rectangle collisionleft;
-     private Rectangle collisionright;
-    // Character x Character y 
-     private double x ;
-     private double y  ;
-    // animations for animators of the Character
-     private Animaton a;
-    // Moment variables
-     private boolean MoveU;
-     private boolean MoveD;
-     private boolean MoveL;
-     private boolean MoveR;
-    // move speed
-     final double movespeed = 3;
-    //player scale
-     final int PLAYER_SCALE = 64;
-    // tile map import
-    TileMap map;
+   // Rectangles for the player
+   private Rectangle deathBox;
+   private Rectangle collisiontop;
+   private Rectangle collisionbottom;
+   private Rectangle collisionleft;
+   private Rectangle collisionright;
+   // Character x Character y 
+   private double x ;
+   private double y  ;
+   // animations for animators of the Character
+   private Animaton a;
+   // Moment variables
+   private boolean MoveU;
+   private boolean MoveD;
+   private boolean MoveL;
+   private boolean MoveR;
+   // move speed
+   final double movespeed = 3;
+   //player scale
+   final int PLAYER_SCALE = 64;
+   // tile map import
+   TileMap map;
    public MainCharacter(TileMap tm)
    {
-       // set animation so no error
+	   // set animation so no error
        a = new Animaton();
        //sets map
        map = tm;
@@ -130,16 +130,12 @@ public class MainCharacter implements Character
        
     
    }
-   public Rectangle getDeathbox()
-   {
-       return deathBox;
-    }
     public void draw(Graphics g)
     {
-        // gets the map offset
+		// gets the map offset
         int tx = map.getx();
         int ty =  map.gety();
-        // draws the boy
+        // draws the image
         g.drawImage(getImage(), (int)((tx+x-PLAYER_SCALE/2)), (int)((ty+y-PLAYER_SCALE/2)), PLAYER_SCALE, PLAYER_SCALE, null);
         // draws the colition boxes
         Graphics2D g2 = (Graphics2D) g;
@@ -153,7 +149,7 @@ public class MainCharacter implements Character
     }
     public void update()
     {
-            // gets the map offset
+    		// gets the map offset
             int tx = map.getx();
             int ty =  map.gety();
             
@@ -163,6 +159,7 @@ public class MainCharacter implements Character
             collisionright = new Rectangle((int)((tx+x-PLAYER_SCALE/2))+(PLAYER_SCALE-10),(int)((ty+y-PLAYER_SCALE/2))+8,2,PLAYER_SCALE-9);
             collisionbottom = new Rectangle((int)((tx+x-PLAYER_SCALE/2)+9), (int)((ty+y-PLAYER_SCALE/2))+PLAYER_SCALE,PLAYER_SCALE-(11+8),2);
             collisionleft = new Rectangle((int)((tx+x-PLAYER_SCALE/2)+6), (int)(ty+y-PLAYER_SCALE/2)+8,2,PLAYER_SCALE-9);
+            //System.out.println(map.getTile(((int)(x)) /PLAYER_SCALE , ((int)(y)) /PLAYER_SCALE));
             
             //more boolean so i don't stop animations
             boolean moveup = getmoveup();
@@ -175,40 +172,43 @@ public class MainCharacter implements Character
             {
                 for(int col = 0; col < map.getWidth(); col++)
                 {
-                        //collision check and tells if should move
-                        if(collisiontop.intersects(map.getTile(row, col).getRectangle())&& map.getTile(row, col).getType().equals("cantMove"))
-                        {
-                            moveup = false;
-                        }
-                        if(collisionbottom.intersects(map.getTile(row, col).getRectangle())&& map.getTile(row, col).getType().equals("cantMove"))
-                        {
-                            movedown = false;
-                        }   
-                        if(collisionright.intersects(map.getTile(row, col).getRectangle())&& map.getTile(row, col).getType().equals("cantMove"))
-                        {
-                            moveright = false;
-                        }
-                        if(collisionleft.intersects(map.getTile(row, col).getRectangle())&& map.getTile(row, col).getType().equals("cantMove"))
-                        {
-                            moveleft = false;
-                        }
-                        //checkes colision for the kill blocks
-                        if(deathBox.intersects(map.getTile(row, col).getRectangle())&& map.getTile(row, col).getType().equals("kill"))
-                        {
-                            //System.out.println("dead");
-                        }
+                	
+                		if(collisiontop.intersects(map.getTile(row, col).getRectangle())&& map.getTile(row, col).getType().equals("cantMove"))
+                		{
+                			moveup = false;
+                		}
+                		if(collisionbottom.intersects(map.getTile(row, col).getRectangle())&& map.getTile(row, col).getType().equals("cantMove"))
+                		{
+                			movedown = false;
+                		}	
+                		if(collisionright.intersects(map.getTile(row, col).getRectangle())&& map.getTile(row, col).getType().equals("cantMove"))
+                		{
+                			moveright = false;
+                		}
+                		if(collisionleft.intersects(map.getTile(row, col).getRectangle())&& map.getTile(row, col).getType().equals("cantMove"))
+                		{
+                			moveleft = false;
+                		}
+                		if(deathBox.intersects(map.getTile(row, col).getRectangle())&& map.getTile(row, col).getType().equals("kill"))
+                		{
+                			System.out.println("dead");
+                		}
+
                 }
             }
-            // moves them 
+            // final say on if it will move
             if(moveup){ y = y - movespeed;}
             if(movedown){y = y + movespeed;}
             if(moveleft){x = x - movespeed;}
             if(moveright){x = x + movespeed;}
-            
-
-            // moves map 
-            map.setx((int)(Main.WIDTH / 2 - x));
-            map.sety((int)(Main.HEIGHT / 2 - y));
+            // sets them to what it is supposed to be 
+        
+    
+            //System.out.println(y);
+            //System.out.println(x);
+            // move map 
+            map.setx((int)(Main.WIDTH / 2 -x));
+            map.sety((int)(Main.HEIGHT / 2 -y));
                 
         }
     
