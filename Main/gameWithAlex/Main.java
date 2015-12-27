@@ -19,14 +19,18 @@ public class Main extends JPanel implements ActionListener , KeyListener
     //timer that holds the refresh rate
     private final Timer timer = new Timer( 33, this);
     //Different scales if i want to change them 
-    private final int Scale = 16;
-    private final int Scale32 = 32;
-    private final int Scale64 = 64;
+    @SuppressWarnings("unused")
+	private final int Scale = 16;
+    @SuppressWarnings("unused")
+	private final int Scale32 = 32;
+    @SuppressWarnings("unused")
+	private final int Scale64 = 64;
     
     public  static int WIDTH; 
     public  static int HEIGHT;
     JFrame frame;
     // gets the and other classes
+    MapChanger maps;
     TileMap  map ;
     MainCharacter boy;
     ItemHandler itemhandler;
@@ -81,11 +85,16 @@ public class Main extends JPanel implements ActionListener , KeyListener
    //updates all the stuff
    public void update()
    {
+	   map = maps.getmap();
        // update map
        map.update();
+       //sets map so it does not crash
+       boy.setMap(map);
        //update the boy
        boy.update();
-       //updates itemhandler
+       //sets the map for the itemHandler so it does not crash
+       itemhandler.setMap(map);
+       //updates itemHandler
        itemhandler.update();
        
    }
@@ -103,9 +112,11 @@ public class Main extends JPanel implements ActionListener , KeyListener
        frame.add(this);
        WIDTH = frame.getWidth();
        HEIGHT = frame.getHeight();
-       map = new TileMap("text2.txt",Scale32);
-       boy = new MainCharacter(map);
-       itemhandler = new ItemHandler(WIDTH,HEIGHT,map,boy);
+       maps = new MapChanger();
+       boy = new MainCharacter();
+       itemhandler = new ItemHandler(WIDTH,HEIGHT,boy);
+       maps.setmap(0);
+       
    }
    @Override
    //Moment for the player and other key events
@@ -140,6 +151,8 @@ public class Main extends JPanel implements ActionListener , KeyListener
        case KeyEvent.VK_LEFT :boy.moveleft(false);break ;
        case KeyEvent.VK_DOWN :boy.movedown(false);break ;
        case KeyEvent.VK_RIGHT :boy.moveright(false);break ;
+       //chagnes map
+       case KeyEvent.VK_P :maps.setmap(2);break ;
        // kills the program 
        case KeyEvent.VK_ESCAPE:timer.stop(); frame.dispose();;break ;
        }

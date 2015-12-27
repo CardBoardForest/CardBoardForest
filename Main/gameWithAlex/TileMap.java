@@ -9,6 +9,10 @@ import carboardForest.StandardGreenItem;
 import carboardForest.StandardKillTile;
 import carboardForest.StandardWhite;
 import carboardForest.Tile;
+import carboardForest.downeyTiles.CornerTile;
+import carboardForest.downeyTiles.FloorTile;
+import carboardForest.downeyTiles.WallTile;
+import carboardForest.downeyTiles.cellingTile;
 
 public class TileMap
 {
@@ -20,7 +24,7 @@ public class TileMap
     private int mapWidth;
     private int mapHeight;
    
-    public TileMap(String s , int TileSize)
+    public TileMap(String s , int TileSize )
     {
         this.tileSize = TileSize;
         try
@@ -59,6 +63,10 @@ public class TileMap
                      	case 1:Tilemap[row][col] = new StandardBlack();break;
                      	case 2:Tilemap[row][col] = new StandardKillTile();break;
                      	case 3:Tilemap[row][col] = new StandardGreenItem();break;
+                     	//case 4:Tilemap[row][col] = new cellingTile();break;
+                     	//case 5: Tilemap[row][col] = new CornerTile();break;
+                     	//case 6: Tilemap[row][col] = new FloorTile();break;
+                     	//case 7: Tilemap[row][col] = new WallTile();break;
                      	default :Tilemap[row][col] = new StandardWhite();break;
                      }
                 	

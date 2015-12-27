@@ -36,12 +36,11 @@ public class MainCharacter implements Character
      final int PLAYER_SCALE = 64;
     // tile map import
     TileMap map;
-   public MainCharacter(TileMap tm)
+   public MainCharacter( )
    {
        // set animation so no error
        a = new Animaton();
        //sets map
-       map = tm;
        //seting the x and y 
        x = PLAYER_SCALE;
        y = PLAYER_SCALE;
@@ -51,6 +50,10 @@ public class MainCharacter implements Character
        collisionbottom = new Rectangle();
        collisionleft = new Rectangle();
        collisionright = new Rectangle();
+   }
+   public void setMap(TileMap tm)
+   {
+	  map = tm; 
    }
    // a lot of set and get methods that do a lot of different things
    public boolean living(){return true;}
