@@ -85,6 +85,7 @@ public class Main extends JPanel implements ActionListener , KeyListener
    //updates all the stuff
    public void update()
    {
+	   //sets the map
 	   map = maps.getmap();
        // update map
        map.update();
@@ -92,6 +93,8 @@ public class Main extends JPanel implements ActionListener , KeyListener
        boy.setMap(map);
        //update the boy
        boy.update();
+       //deals with changing of the maps
+	   MapChanger.setchanged(false);
        //sets the map for the itemHandler so it does not crash
        itemhandler.setMap(map);
        //updates itemHandler
@@ -100,7 +103,9 @@ public class Main extends JPanel implements ActionListener , KeyListener
    }
    public void init()
    {
-	   //removesbthe bar at the top
+	   //loades sheet
+	   ResourceLoader.loadSheet();
+	   //sets the screen
        frame.setUndecorated(true);
        frame.setSize((600),(600));
        frame.setVisible(true);
@@ -110,12 +115,15 @@ public class Main extends JPanel implements ActionListener , KeyListener
        frame.addKeyListener(this);
        timer.start();
        frame.add(this);
+       // sets the back ground to black
+       this.setBackground(Color.black);
+       //instantiates the stuffs
        WIDTH = frame.getWidth();
        HEIGHT = frame.getHeight();
        maps = new MapChanger();
        boy = new MainCharacter();
        itemhandler = new ItemHandler(WIDTH,HEIGHT,boy);
-       maps.setmap(0);
+       MapChanger.setmap(2);
        
    }
    @Override
@@ -152,7 +160,7 @@ public class Main extends JPanel implements ActionListener , KeyListener
        case KeyEvent.VK_DOWN :boy.movedown(false);break ;
        case KeyEvent.VK_RIGHT :boy.moveright(false);break ;
        //chagnes map
-       case KeyEvent.VK_P :maps.setmap(2);break ;
+       case KeyEvent.VK_P :MapChanger.setmap(2);break ;
        // kills the program 
        case KeyEvent.VK_ESCAPE:timer.stop(); frame.dispose();;break ;
        }

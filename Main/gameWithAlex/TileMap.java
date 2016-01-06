@@ -23,10 +23,16 @@ public class TileMap
     private Tile[][] Tilemap;
     private int mapWidth;
     private int mapHeight;
+    private int playerX;
+    private int playerY;
+
    
-    public TileMap(String s , int TileSize )
+    public TileMap(String s , int TileSize , int px , int py)
     {
-        this.tileSize = TileSize;
+    	// sets
+        tileSize = TileSize;
+        playerX = px;
+        playerY = py;
         try
         {
             // inputs from buffered reader
@@ -63,13 +69,12 @@ public class TileMap
                      	case 1:Tilemap[row][col] = new StandardBlack();break;
                      	case 2:Tilemap[row][col] = new StandardKillTile();break;
                      	case 3:Tilemap[row][col] = new StandardGreenItem();break;
-                     	//case 4:Tilemap[row][col] = new cellingTile();break;
-                     	//case 5: Tilemap[row][col] = new CornerTile();break;
-                     	//case 6: Tilemap[row][col] = new FloorTile();break;
-                     	//case 7: Tilemap[row][col] = new WallTile();break;
+                     	case 4:Tilemap[row][col] = new cellingTile();break;
+                     	case 5: Tilemap[row][col] = new CornerTile();break;
+                     	case 6: Tilemap[row][col] = new FloorTile();break;
+                     	case 7: Tilemap[row][col] = new WallTile();break;
                      	default :Tilemap[row][col] = new StandardWhite();break;
                      }
-                	
                 }
                 
             }
@@ -128,6 +133,14 @@ public class TileMap
     {
          Tilemap[row][col] = t;
     }
+    public int getPlayerX()
+    {
+        return playerX ;
+    }
+    public int getPlayerY()
+    {
+        return playerY;
+    }
     // the draw method for the Tilemap
     public void draw(Graphics g)
     {
@@ -136,7 +149,7 @@ public class TileMap
         {
             for(int col = 0; col < mapWidth; col++)
             {
-                Tilemap[row][col].Draw(g,row, col, x, y, tileSize);         
+                Tilemap[row][col].Draw(g,row, col, x, y, tileSize,null);         
             }
         
         

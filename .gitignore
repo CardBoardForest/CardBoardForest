@@ -1,3 +1,4 @@
 Tiles/carboardForest/StandardGreenItem.java
 *.class
 *.java
+/res/

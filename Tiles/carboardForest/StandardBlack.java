@@ -3,15 +3,16 @@ package carboardForest;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
+import java.awt.image.BufferedImage;
 
 public class StandardBlack implements Tile
 {
 	private final String Type ="cantMove";
 	private Rectangle r;
 	@Override
-	public int getNum() 
+	public int ImageNumber() 
 	{
-		return 1;
+		return 0;
 		
 	}
 
@@ -23,7 +24,7 @@ public class StandardBlack implements Tile
 	}
 
 	@Override
-	public void Draw(Graphics g,int row, int col, int x, int y, int tileSize ) 
+	public void Draw(Graphics g,int row, int col, int x, int y, int tileSize,BufferedImage i)
 	{
 		g.setColor(Color.BLACK);
 		g.fillRect(col*tileSize+x,row*tileSize+y,tileSize,tileSize);
@@ -40,6 +41,5 @@ public class StandardBlack implements Tile
 	{	
 		return Type;
 	}
-
 
 }

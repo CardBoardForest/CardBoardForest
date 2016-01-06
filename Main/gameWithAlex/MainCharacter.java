@@ -57,7 +57,6 @@ public class MainCharacter implements Character
    }
    // a lot of set and get methods that do a lot of different things
    public boolean living(){return true;}
-  
    public void moveup(boolean moveU ){this.MoveU=moveU;}
    public void movedown(boolean moveD ){this.MoveD=moveD;}
    public void moveleft(boolean moveL ){this.MoveL=moveL;}
@@ -73,6 +72,8 @@ public class MainCharacter implements Character
    
    public BufferedImage getImage()
    {
+	   // gets images based on what direction moving and then goes through the 
+	   //imges with the animation class
        try
        {
            if(MoveU)
@@ -87,8 +88,7 @@ public class MainCharacter implements Character
                         if(MoveR)
                             a.setFrames(getsprite("KidWalkRight.png"));
                         else
-                            return 
-                                    getsprite("KidWalkFront.png")[0];
+                            return getsprite("KidWalkFront.png")[0];
            a.setDelay(100);
            a.update();
            return a.getImage();
@@ -133,10 +133,11 @@ public class MainCharacter implements Character
        
     
    }
+    // gets the death box
    public Rectangle getDeathbox()
    {
        return deathBox;
-    }
+   }
     public void draw(Graphics g)
     {
         // gets the map offset
@@ -156,15 +157,21 @@ public class MainCharacter implements Character
     }
     public void update()
     {
+    	// sets the player x when it chagnes maps
+    		if(MapChanger.changed())
+    		{
+    		x = map.getPlayerX();
+    		y = map.getPlayerY();
+    		}
             // gets the map offset
             int tx = map.getx();
             int ty =  map.gety();
             
             // sets players character boxes 
             deathBox = new Rectangle(((int)(tx+x-PLAYER_SCALE/2))+8,(int)((ty+y-PLAYER_SCALE/2)+7), PLAYER_SCALE-18, PLAYER_SCALE-7);
-            collisiontop = new Rectangle((int)((tx+x-PLAYER_SCALE/2))+9, (int)((ty+y-PLAYER_SCALE/2)+5),PLAYER_SCALE-(11+8),2);
+            collisiontop = new Rectangle((int)((tx+x-PLAYER_SCALE/2))+9, (int)((ty+y-PLAYER_SCALE/2)+5),PLAYER_SCALE-(11+9),2);
             collisionright = new Rectangle((int)((tx+x-PLAYER_SCALE/2))+(PLAYER_SCALE-10),(int)((ty+y-PLAYER_SCALE/2))+8,2,PLAYER_SCALE-9);
-            collisionbottom = new Rectangle((int)((tx+x-PLAYER_SCALE/2)+9), (int)((ty+y-PLAYER_SCALE/2))+PLAYER_SCALE,PLAYER_SCALE-(11+8),2);
+            collisionbottom = new Rectangle((int)((tx+x-PLAYER_SCALE/2)+9), (int)((ty+y-PLAYER_SCALE/2))+PLAYER_SCALE,PLAYER_SCALE-(11+9),2);
             collisionleft = new Rectangle((int)((tx+x-PLAYER_SCALE/2)+6), (int)(ty+y-PLAYER_SCALE/2)+8,2,PLAYER_SCALE-9);
             
             //more boolean so i don't stop animations
