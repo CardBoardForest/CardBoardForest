@@ -3,10 +3,7 @@ package gameWithAlex;
 // @author Colin Wakefield
 import java.awt.Graphics;
 import java.awt.Rectangle;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 import java.awt.*;
 
@@ -168,7 +165,7 @@ public class MainCharacter implements Character
             int ty =  map.gety();
             
             // sets players character boxes 
-            deathBox = new Rectangle(((int)(tx+x-PLAYER_SCALE/2))+8,(int)((ty+y-PLAYER_SCALE/2)+7), PLAYER_SCALE-18, PLAYER_SCALE-7);
+            deathBox = new Rectangle(((int)(tx+x-PLAYER_SCALE/2))+6,(int)((ty+y-PLAYER_SCALE/2)+5), PLAYER_SCALE-14, PLAYER_SCALE-3);
             collisiontop = new Rectangle((int)((tx+x-PLAYER_SCALE/2))+9, (int)((ty+y-PLAYER_SCALE/2)+5),PLAYER_SCALE-(11+9),2);
             collisionright = new Rectangle((int)((tx+x-PLAYER_SCALE/2))+(PLAYER_SCALE-10),(int)((ty+y-PLAYER_SCALE/2))+8,2,PLAYER_SCALE-9);
             collisionbottom = new Rectangle((int)((tx+x-PLAYER_SCALE/2)+9), (int)((ty+y-PLAYER_SCALE/2))+PLAYER_SCALE,PLAYER_SCALE-(11+9),2);
@@ -186,19 +183,27 @@ public class MainCharacter implements Character
                 for(int col = 0; col < map.getWidth(); col++)
                 {
                         //collision check and tells if should move
-                        if(collisiontop.intersects(map.getTile(row, col).getRectangle())&& map.getTile(row, col).getType().equals("cantMove"))
+                        if(collisiontop.intersects(map.getTile(row, col).getRectangle())&& (map.getTile(row, col).getType().equals("cantMove")
+                        		|| 	map.getTile(row, col).getType().equals("door"))
+                        		)
                         {
                             moveup = false;
                         }
-                        if(collisionbottom.intersects(map.getTile(row, col).getRectangle())&& map.getTile(row, col).getType().equals("cantMove"))
+                        if(collisionbottom.intersects(map.getTile(row, col).getRectangle())&& (map.getTile(row, col).getType().equals("cantMove")
+                        		|| 	map.getTile(row, col).getType().equals("door"))
+                        		)
                         {
                             movedown = false;
                         }   
-                        if(collisionright.intersects(map.getTile(row, col).getRectangle())&& map.getTile(row, col).getType().equals("cantMove"))
+                        if(collisionright.intersects(map.getTile(row, col).getRectangle())&& (map.getTile(row, col).getType().equals("cantMove")
+                        		|| 	map.getTile(row, col).getType().equals("door"))
+                        		)
                         {
                             moveright = false;
                         }
-                        if(collisionleft.intersects(map.getTile(row, col).getRectangle())&& map.getTile(row, col).getType().equals("cantMove"))
+                        if(collisionleft.intersects(map.getTile(row, col).getRectangle())&& (map.getTile(row, col).getType().equals("cantMove")
+                        		|| 	map.getTile(row, col).getType().equals("door"))
+                        		)
                         {
                             moveleft = false;
                         }

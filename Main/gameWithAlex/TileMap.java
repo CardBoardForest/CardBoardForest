@@ -5,7 +5,9 @@ import java.io.*;
 import java.awt.*;
 
 import carboardForest.StandardBlack;
+import carboardForest.StandardDoor;
 import carboardForest.StandardGreenItem;
+import carboardForest.StandardKey;
 import carboardForest.StandardKillTile;
 import carboardForest.StandardWhite;
 import carboardForest.Tile;
@@ -73,6 +75,8 @@ public class TileMap
                      	case 5: Tilemap[row][col] = new CornerTile();break;
                      	case 6: Tilemap[row][col] = new FloorTile();break;
                      	case 7: Tilemap[row][col] = new WallTile();break;
+                     	case 8: Tilemap[row][col] = new StandardDoor();break;
+                     	case 9: Tilemap[row][col] = new StandardKey();break;
                      	default :Tilemap[row][col] = new StandardWhite();break;
                      }
                 }
