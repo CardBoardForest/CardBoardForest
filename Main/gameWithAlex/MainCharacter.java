@@ -19,7 +19,7 @@ public class MainCharacter implements Character
      private Rectangle collisionright;
     // Character x Character y 
      private double x ;
-     private double y  ;
+     private double y ;
     // animations for animators of the Character
      private Animaton a;
     // Moment variables
