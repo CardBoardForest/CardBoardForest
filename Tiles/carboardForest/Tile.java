@@ -1,4 +1,4 @@
-//This is a cool comment
+// @author Colin Wakefield
 package carboardForest;
 
 import java.awt.Graphics;

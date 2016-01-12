@@ -1,4 +1,4 @@
- 
+ // @author Colin Wakefield
 package gameWithAlex;
 
 import java.io.*;
